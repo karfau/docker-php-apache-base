@@ -5,19 +5,19 @@ MAINTAINER Webgriffe Srl <support@webgriffe.com>
 RUN apt-get update \
     && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng12-dev \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install gd
+    && docker-php-ext-install gd \
 	&& apt-get clean
 
 # Install MCrypt
 RUN apt-get update \
     && apt-get install -y libmcrypt-dev \
-    && docker-php-ext-install mcrypt
+    && docker-php-ext-install mcrypt \
 	&& apt-get clean
 
 # Install Intl
 RUN apt-get update \
     && apt-get install -y libicu-dev \
-    && docker-php-ext-install intl
+    && docker-php-ext-install intl \
 	&& apt-get clean
 
 ENV XDEBUG_ENABLE 0
@@ -40,7 +40,7 @@ RUN docker-php-ext-install mbstring
 # Install soap
 RUN apt-get update \
     && apt-get install -y libxml2-dev \
-    && docker-php-ext-install soap
+    && docker-php-ext-install soap \
 	&& apt-get clean
 
 # Install opcache
@@ -51,13 +51,13 @@ RUN docker-php-ext-install zip
 
 # Install Git
 RUN apt-get update \
-    && apt-get install -y git
+    && apt-get install -y git \
 	&& apt-get clean
 
 # Install xsl
 RUN apt-get update \
     && apt-get install -y libxslt-dev \
-    && docker-php-ext-install xsl
+    && docker-php-ext-install xsl \
 	&& apt-get clean
 
 # Define PHP_TIMEZONE env variable
@@ -83,7 +83,7 @@ RUN apt-get update \
 
 # Install MySQL CLI Client
 RUN apt-get update \
-    && apt-get install -y mysql-client
+    && apt-get install -y mysql-client \
 	&& apt-get clean
 
 ########################################################################################################################
