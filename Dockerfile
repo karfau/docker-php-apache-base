@@ -6,16 +6,19 @@ RUN apt-get update \
     && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng12-dev \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd
+	&& apt-get clean
 
 # Install MCrypt
 RUN apt-get update \
     && apt-get install -y libmcrypt-dev \
     && docker-php-ext-install mcrypt
+	&& apt-get clean
 
 # Install Intl
 RUN apt-get update \
     && apt-get install -y libicu-dev \
     && docker-php-ext-install intl
+	&& apt-get clean
 
 ENV XDEBUG_ENABLE 0
 RUN pecl config-set preferred_state beta \
@@ -38,6 +41,7 @@ RUN docker-php-ext-install mbstring
 RUN apt-get update \
     && apt-get install -y libxml2-dev \
     && docker-php-ext-install soap
+	&& apt-get clean
 
 # Install opcache
 RUN docker-php-ext-install opcache
@@ -48,11 +52,13 @@ RUN docker-php-ext-install zip
 # Install Git
 RUN apt-get update \
     && apt-get install -y git
+	&& apt-get clean
 
 # Install xsl
 RUN apt-get update \
     && apt-get install -y libxslt-dev \
     && docker-php-ext-install xsl
+	&& apt-get clean
 
 # Define PHP_TIMEZONE env variable
 ENV PHP_TIMEZONE Europe/Rome
@@ -78,6 +84,7 @@ RUN apt-get update \
 # Install MySQL CLI Client
 RUN apt-get update \
     && apt-get install -y mysql-client
+	&& apt-get clean
 
 ########################################################################################################################
 
