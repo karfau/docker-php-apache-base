@@ -79,8 +79,9 @@ RUN apt-get update \
 RUN apt-get update \
     && apt-get install -y mysql-client \
     && apt-get install -y vim-tiny \
-    && cp ./.vimrc /root \
 	&& apt-get clean
+	
+COPY ./vimrc /root/.vimrc
 
 ########################################################################################################################
 
