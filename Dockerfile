@@ -72,6 +72,7 @@ RUN a2enmod rewrite
 # Additional PHP ini configuration
 COPY ./999-php.ini /usr/local/etc/php/conf.d/
 
+# Sample index.php with phpinfo() and entrypoint
 COPY ./index.php /var/www/html/index.php
 
 # Install ssmtp Mail Transfer Agent
@@ -81,9 +82,11 @@ RUN apt-get update \
     && echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf \
     && echo 'sendmail_path = "/usr/sbin/ssmtp -t"' > /usr/local/etc/php/conf.d/mail.ini
 
-# Install MySQL CLI Client
+# Install MySQL CLI Client & Text Editor
 RUN apt-get update \
     && apt-get install -y mysql-client \
+    && apt-get install -y vim-tiny \
+    && cp ./.vimrc /root \
 	&& apt-get clean
 
 ########################################################################################################################

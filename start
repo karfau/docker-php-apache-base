@@ -13,6 +13,9 @@ echo "<Directory $APACHE_DOC_ROOT>" > /etc/apache2/conf-available/document-root-
 echo "	AllowOverride All" >> /etc/apache2/conf-available/document-root-directory.conf
 echo "	Require all granted" >> /etc/apache2/conf-available/document-root-directory.conf
 echo "</Directory>" >> /etc/apache2/conf-available/document-root-directory.conf
+if [ "$APACHE_DOC_ROOT_ALIAS" ]; then
+	echo "Alias $APACHE_DOC_ROOT_ALIAS $APACHE_DOC_ROOT" >> /etc/apache2/conf-available/document-root-directory.conf
+fi;
 a2enconf "document-root-directory.conf"
 
 # Enable XDebug if needed

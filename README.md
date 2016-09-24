@@ -10,6 +10,7 @@ Features
 --------
 
 * Ability to set Apache document root through `APACHE_DOC_ROOT` environment variable. Default document root is `/var/www/html`
+* Ability to set an Alias through `APACHE_DOC_ROOT_ALIAS` (no trailing slash!)
 * Enabled Apache modules: rewrite
 * Ability to set PHP `date.timezone` through `PHP_TIMEZONE` environment variable. Default timezone is `Europe/Rome`
 * Enabled PHP extensions: gd, mcrypt, intl, mysql, mysqli, pdo_mysql, mbstring, soap, opcache, zip, xls
