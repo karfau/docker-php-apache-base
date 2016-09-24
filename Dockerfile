@@ -75,9 +75,12 @@ RUN apt-get update \
     && echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf \
     && echo 'sendmail_path = "/usr/sbin/ssmtp -t"' > /usr/local/etc/php/conf.d/mail.ini
 
-# Install MySQL CLI Client
+# Install MySQL CLI Client & Text Editor
 RUN apt-get update \
-    && apt-get install -y mysql-client
+    && apt-get install -y mysql-client \
+    && apt-get install -y vim-tiny \
+    && cp ./.vimrc /root \
+	&& apt-get clean
 
 ########################################################################################################################
 
