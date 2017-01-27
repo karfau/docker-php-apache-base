@@ -34,4 +34,11 @@ Credits
 
 
 
+How to profile your page:
+-------------------------
+
+Before starting the docker container:
+Set config variable XDEBUG_ENABLE to 1
+
+Enable profiling by adding XDEBUG_PROFILE to the GET/POST Variables or as a cookie.
 
