@@ -31,6 +31,7 @@ COPY ./99-xdebug.ini.disabled /usr/local/etc/php/conf.d/
 # Install Memprof
 ENV MEMPROF_ENABLE 0
 RUN pecl config-set preferred_state beta \
+    && apt-get install -y libjudy-dev
     && pecl install -o -f memprof \
     && rm -rf /tmp/pear \
     && pecl config-set preferred_state stable
