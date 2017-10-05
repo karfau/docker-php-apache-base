@@ -33,6 +33,10 @@ if [ "$XDEBUG_ENABLE" = "1" ]; then
     echo "xdebug.trace_output_dir=$APACHE_DOC_ROOT" >> /usr/local/etc/php/conf.d/xdebug_custom.ini
 fi;
 
+if [ "$MEMPROF_ENABLE" = "1" ]; then
+    docker-php-ext-enable memprof
+fi;
+
 # Configure sSMTP
 if [ "$SSMTP_MAILHUB" ]; then
     echo "mailhub=$SSMTP_MAILHUB" >> /etc/ssmtp/ssmtp.conf

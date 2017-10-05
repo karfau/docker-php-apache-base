@@ -20,12 +20,21 @@ RUN apt-get update \
     && docker-php-ext-install intl \
 	&& apt-get clean
 
+# Install XDEBUG
 ENV XDEBUG_ENABLE 0
 RUN pecl config-set preferred_state beta \
     && pecl install -o -f xdebug \
     && rm -rf /tmp/pear \
     && pecl config-set preferred_state stable
 COPY ./99-xdebug.ini.disabled /usr/local/etc/php/conf.d/
+
+# Install Memprof
+ENV MEMPROF_ENABLE 0
+RUN pecl config-set preferred_state beta \
+    && pecl install -o -f memprof \
+    && rm -rf /tmp/pear \
+    && pecl config-set preferred_state stable
+
 
 # Install Mysql
 RUN docker-php-ext-install mysqli pdo_mysql
