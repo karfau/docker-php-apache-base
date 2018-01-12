@@ -8,12 +8,6 @@ RUN apt-get update \
     && docker-php-ext-install gd \
 	&& apt-get clean
 
-# Install MCrypt
-RUN apt-get update \
-    && apt-get install -y libmcrypt-dev \
-    && docker-php-ext-install mcrypt \
-	&& apt-get clean
-
 # Install Intl
 RUN apt-get update \
     && apt-get install -y libicu-dev \
