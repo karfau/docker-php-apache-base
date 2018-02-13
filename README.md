@@ -1,8 +1,27 @@
 Base PHP with Apache Docker Container
 =====================================
 
-[![](https://images.microbadger.com/badges/version/benjaminpick/php-apache-base.svg)](http://microbadger.com/images/webgriffe/php-apache-base "Get your own version badge on microbadger.com")
-[![](https://images.microbadger.com/badges/image/benjaminpick/php-apache-base.svg)](http://microbadger.com/images/webgriffe/php-apache-base "Get your own version badge on microbadger.com")
+### Fork by karfau
+
+Simplifing images so they work for me when  developing a page using [Grav](https://getgrav.org/) in branches ending with `-grav-dev`.
+
+Example `docker-compose.yml` inside the grav folder:
+```yaml
+version: '2'
+
+services:
+  php:
+    build: path/to/local/clone/docker-php-apache-base
+    volumes:
+          - .:/var/www/html
+    ports:
+      - "80:80"
+```
+
+- avoid using composer inside the docker image, or all (updated?) files will be owned by root
+
+
+### Original README continues
 
 Dockerized environment for PHP web development and Apache web server.
 
