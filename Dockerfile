@@ -11,31 +11,23 @@ RUN apt-get update \
     && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng12-dev \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd \
-
 # Install MCrypt
     && apt-get install -y libmcrypt-dev \
     && docker-php-ext-install mcrypt \
-
 # Install Intl
     && apt-get install -y libicu-dev \
     && docker-php-ext-install intl \
-
 # Install mbstring
     && docker-php-ext-install mbstring \
-
 # Install soap
     && apt-get install -y libxml2-dev \
     && docker-php-ext-install soap \
-
 # Install opcache
     && docker-php-ext-install opcache \
-
 # Install PHP zip extension
     && docker-php-ext-install zip \
-
 # Install Git
     && apt-get install -y git \
-
 # Install xsl
     && apt-get install -y libxslt-dev \
     && docker-php-ext-install xsl \
